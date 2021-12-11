@@ -30,7 +30,6 @@ namespace C_1
 
   void Parser::declaraciones(){
     std::cout << " En declaraciones" << '\n';
-    declaraciones();
     declaracion();
   }
   
