@@ -54,8 +54,13 @@ using namespace std;
 [a-zA-Z_]([a-zA-Z0-9_])* {return ID;}
 [0-9]+  {return NUMERO;}
 ([0-9])*.([0-9])+([Ee]([+-][)?([0-9])+)?    {return NUMERO;}
-[ \t\r\n]+ {}
-.   { cout << "ERROR LEXICO" << yytext << endl;}
+[+-]?([0-9])*[.]([0-9])+([Ee]([+-])?([0-9])+)?   {return NUMERO;}
+[+-]?(((([0-9]+[.]?[0-9]*)|([.][0-9]+))([eE][+-]?[0-9]+[fF]?)?)|(([0-9]+[.][0-9]*)|([.][0-9]+))[fF]?)   {return NUMERO;}
+[ \t\r\n]+ {return ESP;}
+\'([a-zA-Z0-9]|[ \t\r\n])\' {return CARACTER;}
+\'\'    {return CARACTER;}
+\"([a-zA-Z0-9]|[ \t\r\n])*\"  {return CADENA;}
+.   { cout << "ERROR LEXICO EN: " << yytext << endl;}
 
 %%
 
